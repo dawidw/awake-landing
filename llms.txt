@@ -8,14 +8,15 @@ Awake is an independent app built by Dawid Woźniak and Sature. It keeps the scr
 
 - On: keep the Mac awake until you turn it off
 - Off: return to normal sleep
-- Sunset: a timer that ends the session
+- Sunset: a timer that ends the session, up to 10 hours
 - Start at login
 - Optional countdown in the menu bar
-- Appearance: themes and accent colors
+- Appearance: Theme 1, 2 and 3, with highlight colors White, Green, Purple and Blue
 
 ## Product
 
 - [Awake](https://awake.dawidw.pl/): menu bar keep-awake for Mac
+- [Changelog](https://awake.dawidw.pl/changelog/): what is new in Awake, starting with 1.0.0
 - [Privacy](https://awake.dawidw.pl/privacy.html): the app stays on your Mac and does not collect data
 - [Terms](https://awake.dawidw.pl/terms.html): terms of use
 
