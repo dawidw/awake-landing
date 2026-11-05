@@ -63,20 +63,24 @@
   .row .ico-off { display:none; }
   .row:not(.is-on) .ico-on { display:none; }
   .row:not(.is-on) .ico-off { display:block; }
-  .timer { display:flex; align-items:center; gap:6px; margin:0 4px 4px 22px; color:#8e8e93; font-size:11px; }
+  .timer { display:flex; flex-direction:column; gap:8px; margin:8px 6px 12px; color:#8e8e93; font-size:11px; }
   .timer[hidden] { display:none; }
-  .timer input { flex:1; min-width:0; appearance:none; height:3px; margin:0; border-radius:2px; background:#3a3a3e; cursor:default; }
-  .timer input::-webkit-slider-thumb { appearance:none; width:12px; height:12px; border-radius:50%; background:#f9faf7; box-shadow:0 0 0 1px rgba(0,0,0,.25); }
-  .timer input::-moz-range-thumb { width:12px; height:12px; border:0; border-radius:50%; background:#f9faf7; }
+  .timer-top { display:flex; justify-content:space-between; align-items:baseline; }
+  .timer input { width:100%; appearance:none; height:14px; margin:0; background:transparent; cursor:default; }
+  .timer input::-webkit-slider-runnable-track { height:3px; border-radius:2px; background:#6b6b70; }
+  .timer input::-webkit-slider-thumb { appearance:none; width:14px; height:14px; margin-top:-5.5px; border-radius:50%; background:#f9faf7; }
+  .timer input::-moz-range-track { height:3px; border:0; border-radius:2px; background:#6b6b70; }
+  .timer input::-moz-range-thumb { width:14px; height:14px; border:0; border-radius:50%; background:#f9faf7; }
   .timer .tval { color:#f9faf7; font-variant-numeric:tabular-nums; }
   .bar .count { font-size:11px; font-weight:600; letter-spacing:-0.02em; }
   .bar .count[hidden] { display:none; }
   .bar .pill.wide { width:auto; gap:4px; padding:0 7px; }
   .row kbd { margin-left:auto; font:inherit; font-size:12px; color:#a6a5a8; background:none; }
-  .row.is-on { color:#f9faf7; font-weight:600; }
+  .row.is-on { color:#f9faf7; font-weight:600; background:transparent; }
   .row.is-on kbd { color:#f9faf7; }
-  .row:hover, .row:focus-visible { background:rgba(249,250,247,.14); color:#f9faf7; outline:none; }
-  .row:hover kbd, .row:focus-visible kbd { color:#f9faf7; }
+  .row:focus, .row:focus-visible { outline:none; background:transparent; }
+  .row:hover { background:rgba(249,250,247,.14); color:#f9faf7; }
+  .row:hover kbd { color:#f9faf7; }
   .sep { height:1px; margin:4px 8px; background:rgba(249,250,247,.16); }
   .demo figcaption { margin-top:14px; text-align:center; font-size:13px; color:var(--muted); }
   .credit { margin-top:2px; text-align:center; font-size:13px; color:var(--muted); }
@@ -179,19 +183,18 @@
             <span>Sunset</span>
           </button>
           <div class="timer" hidden>
-            <span>Timer</span>
+            <div class="timer-top"><span>Timer</span><span class="tval">04:00</span></div>
             <input type="range" min="15" max="600" step="15" value="240" aria-label="Timer">
-            <span class="tval">04:00</span>
           </div>
           <div class="sep"></div>
           <button class="row is-on" type="button" role="menuitemcheckbox" data-toggle="login" aria-checked="true">
             <svg class="ico-on" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.3" fill="currentColor"/></svg>
-            <svg class="ico-off" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="currentColor"/></svg>
+            <svg class="ico-off" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5" fill="none" stroke="#8e8e93" stroke-width="1.4"/></svg>
             <span>Start at login</span>
           </button>
           <button class="row" type="button" role="menuitemcheckbox" data-toggle="count" aria-checked="false">
             <svg class="ico-on" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.3" fill="currentColor"/></svg>
-            <svg class="ico-off" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.1" fill="currentColor"/></svg>
+            <svg class="ico-off" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5" fill="none" stroke="#8e8e93" stroke-width="1.4"/></svg>
             <span>Countdown in menu</span>
           </button>
           <div class="sep"></div>
