@@ -37,7 +37,8 @@
   nav { display:flex; justify-content:space-between; align-items:center; height:72px; }
   nav .brand { display:flex; align-items:center; gap:10px; font-weight:600; letter-spacing:-0.02em; font-size:16px; }
   nav .brand img { width:26px; height:26px; display:block; }
-  nav .buy { color:#fff; font-size:14px; font-weight:500; cursor:default; user-select:none; }
+  nav .buy { color:#fff; font-size:14px; font-weight:500; }
+  nav a.buy:hover { opacity:.8; }
 
   .hero { text-align:center; padding-top:56px; padding-bottom:8px; }
   .hero .mark { width:84px; height:84px; display:block; margin:0 auto 28px; filter:drop-shadow(0 16px 28px rgba(255,159,10,.22)); }
@@ -45,8 +46,16 @@
   .hero .tagline { margin-top:14px; font-size:clamp(20px, 2.6vw, 26px); font-weight:600; letter-spacing:-0.02em; color:var(--accent); }
   .hero p.lead { margin:22px auto 0; max-width:540px; font-size:clamp(18px, 2.2vw, 21px); color:var(--muted); }
   .hero p.lead b { color:var(--fg); font-weight:500; }
-  .cta { display:inline-flex; align-items:center; margin-top:36px; padding:14px 28px; border-radius:999px; background:#fff; color:#000; font-weight:600; font-size:16px; letter-spacing:-0.01em; cursor:default; user-select:none; transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease; }
+  .cta { display:inline-flex; align-items:center; margin-top:36px; padding:14px 28px; border-radius:999px; background:#fff; color:#000; font-weight:600; font-size:16px; letter-spacing:-0.01em; cursor:pointer; user-select:none; transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease; }
   .cta:hover { transform:translateY(-2px); box-shadow:0 14px 30px -16px rgba(255,255,255,.45); }
+  .diy { margin-top:14px; font-size:14px; line-height:1.45; color:var(--muted); }
+  .diy b { color:#fff; font-weight:500; }
+  .diy .copy { color:var(--muted); text-decoration:underline; text-decoration-style:dotted; text-underline-offset:3px; cursor:pointer; }
+  .diy .copy:hover { color:var(--fg); }
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  .prompt { margin:12px auto 0; max-width:640px; text-align:left; font-size:13px; color:var(--muted); }
+  .prompt summary { cursor:pointer; }
+  .prompt pre { margin-top:8px; white-space:pre-wrap; font:inherit; }
   .note { margin-top:14px; font-size:13px; color:var(--muted); }
   @media (prefers-reduced-motion: reduce) { .cta, .cta:hover { transform:none; transition:none; } }
 
@@ -157,7 +166,7 @@
   <div class="wrap">
     <nav>
       <a class="brand" href="https://awake.dawidw.pl/"><img src="icon.png?v=5" width="26" height="26" alt="">Awake</a>
-      <span class="buy">Buy</span>
+      <a class="buy" href="https://www.creem.io/payment/prod_3vmGnYj2Nmk4Jv2wROBrJw">Buy for $5</a>
     </nav>
 
     <header class="hero">
@@ -165,7 +174,44 @@
       <h1>Awake</h1>
       <p class="tagline">Keep your Mac awake when you need it</p>
       <p class="lead">Leave it on, set a sunset, or stay awake while an app is running. <b>Small, native, and calm.</b></p>
-      <span class="cta">Buy</span>
+      <a class="cta" href="https://www.creem.io/payment/prod_3vmGnYj2Nmk4Jv2wROBrJw">Buy for $5</a>
+      <p class="diy">or<br>spend <b>~10% of weekly Super plan usage</b> and <b>an afternoon</b><br>building it yourself, starting with <a href="#build-prompt" class="copy" id="copyPrompt" role="button" aria-label="Copy the build prompt to the clipboard">this prompt</a><span class="sr-only" id="copyStatus" aria-live="polite"></span></p>
+      <pre class="sr-only" id="buildPromptText">Build me a small native macOS menu bar app from scratch. Work directly on my Mac, show me progress after each step and iterate with me until I'm happy.
+1. Stack: Swift and SwiftUI as a Swift Package (macOS 13 or later), plus a build script that produces a runnable .app bundle.
+2. The app lives in the menu bar and keeps the Mac awake when asked, using IOKit power assertions. Off lets the Mac sleep normally again.
+3. Modes: On (stay awake until turned off), Sunset (a countdown timer with a slider), End at (a time of day in 15-minute steps; if that time has passed, it ends tomorrow), and Until (stay awake while a chosen running app is running).
+4. The menu: On, Off, Sunset with its timer, slider and countdown, End at with minus/plus, Until as a single row with a window icon and a chevron that opens a submenu of running apps (do not list the apps inline in the main menu), Start at login, Countdown in menu, Settings with a gear icon, Quit.
+5. Settings is a separate window (not named Appearance): themes and highlight colors with a live preview, a keyboard shortcut that switches between off and the last On, Sunset or Until mode (Escape cancels, Clear removes it), Allow display sleep (the display may sleep while the Mac stays awake), Turn off on battery (plugging in does not turn Awake back on), and Check for Updates.
+6. Keep power-assertion and mode logic separate from the UI and cover it with unit tests (swift test).
+7. When it works, build the .app with the script, launch it, and show me screenshots of the menu (including the Until row) and Settings.</pre>
+      <noscript><details class="prompt" id="build-prompt" open><summary>The prompt</summary><pre>Build me a small native macOS menu bar app from scratch. Work directly on my Mac, show me progress after each step and iterate with me until I'm happy.
+1. Stack: Swift and SwiftUI as a Swift Package (macOS 13 or later), plus a build script that produces a runnable .app bundle.
+2. The app lives in the menu bar and keeps the Mac awake when asked, using IOKit power assertions. Off lets the Mac sleep normally again.
+3. Modes: On (stay awake until turned off), Sunset (a countdown timer with a slider), End at (a time of day in 15-minute steps; if that time has passed, it ends tomorrow), and Until (stay awake while a chosen running app is running).
+4. The menu: On, Off, Sunset with its timer, slider and countdown, End at with minus/plus, Until as a single row with a window icon and a chevron that opens a submenu of running apps (do not list the apps inline in the main menu), Start at login, Countdown in menu, Settings with a gear icon, Quit.
+5. Settings is a separate window (not named Appearance): themes and highlight colors with a live preview, a keyboard shortcut that switches between off and the last On, Sunset or Until mode (Escape cancels, Clear removes it), Allow display sleep (the display may sleep while the Mac stays awake), Turn off on battery (plugging in does not turn Awake back on), and Check for Updates.
+6. Keep power-assertion and mode logic separate from the UI and cover it with unit tests (swift test).
+7. When it works, build the .app with the script, launch it, and show me screenshots of the menu (including the Until row) and Settings.</pre></details></noscript>
+      <script>
+(() => {
+  const a = document.getElementById('copyPrompt'), st = document.getElementById('copyStatus');
+  const text = document.getElementById('buildPromptText').textContent;
+  const fallback = () => { const t = document.createElement('textarea'); t.value = text; t.setAttribute('readonly', '');
+    t.style.position = 'fixed'; t.style.opacity = '0'; document.body.appendChild(t); t.select();
+    let ok = false; try { ok = document.execCommand('copy'); } catch (e) {} t.remove(); return ok; };
+  let timer;
+  a.addEventListener('click', async (e) => {
+    e.preventDefault();
+    let ok = false;
+    try { if (navigator.clipboard && window.isSecureContext) {
+      ok = await Promise.race([navigator.clipboard.writeText(text).then(() => true), new Promise(r => setTimeout(() => r(false), 1000))]);
+    } } catch (e) {}
+    if (!ok) ok = fallback();
+    a.textContent = ok ? 'copied!' : 'copy failed'; st.textContent = ok ? 'Prompt copied to the clipboard' : 'Copy failed';
+    clearTimeout(timer); timer = setTimeout(() => { a.textContent = 'this prompt'; st.textContent = ''; }, 2000);
+  });
+})();
+</script>
       <p class="note">Requires macOS 13 or later. One-time purchase, no subscription.</p>
     </header>
 
@@ -173,7 +219,7 @@
       <div class="desk">
         <div class="bar" aria-hidden="true">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1.5 6.2a8 8 0 0 1 13 0"/><path d="M3.6 8.4a5 5 0 0 1 8.8 0"/><path d="M6 10.6a2.2 2.2 0 0 1 4 0"/><circle cx="8" cy="13" r=".8" fill="currentColor" stroke="none"/></svg>
-          <span class="pill"><svg data-bar="on" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="2.5"/><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 1.6v1.7M8 12.7v1.7M1.6 8h1.7M12.7 8h1.7M3.4 3.4l1.2 1.2M11.4 11.4l1.2 1.2M12.6 3.4l-1.2 1.2M4.6 11.4l-1.2 1.2"/></g></svg><svg data-bar="off" viewBox="0 0 16 16" hidden><path fill="currentColor" d="M9.1 2.1a5.3 5.3 0 1 0 4.7 8.2A4.5 4.5 0 1 1 9.1 2.1z"/></svg><svg data-bar="sunset" viewBox="0 0 16 16" hidden><path fill="currentColor" d="M4.1 12.2a3.9 3.9 0 0 1 7.8 0H4.1z"/><path fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M2.8 12.2h10.4M8 3.4v1.8M5.1 5.3l1.15 1.15M10.9 5.3l-1.15 1.15"/></svg><svg data-bar="until" viewBox="0 0 16 16" hidden><rect x="1.8" y="2.4" width="12.4" height="11.2" rx="1.7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.2 5.5h9.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span class="count" hidden>04:00</span></span>
+          <span class="pill"><svg data-bar="on" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="2.5"/><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 1.6v1.7M8 12.7v1.7M1.6 8h1.7M12.7 8h1.7M3.4 3.4l1.2 1.2M11.4 11.4l1.2 1.2M12.6 3.4l-1.2 1.2M4.6 11.4l-1.2 1.2"/></g></svg><svg data-bar="off" viewBox="0 0 16 16" hidden><path fill="currentColor" d="M9.1 2.1a5.3 5.3 0 1 0 4.7 8.2A4.5 4.5 0 1 1 9.1 2.1z"/></svg><svg data-bar="sunset" viewBox="0 0 16 16" hidden><path fill="currentColor" d="M4.1 12.2a3.9 3.9 0 0 1 7.8 0H4.1z"/><path fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M2.8 12.2h10.4M8 3.4v1.8M5.1 5.3l1.15 1.15M10.9 5.3l-1.15 1.15"/></svg><svg data-bar="until" viewBox="0 0 16 16" hidden><rect x="1.7" y="2.7" width="12.6" height="10.6" rx="2" fill="none" stroke="currentColor" stroke-width="1.25"/><path d="M3.2 5.85h9.6" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"/><circle cx="3.7" cy="4.3" r=".55" fill="currentColor"/><circle cx="5.25" cy="4.3" r=".55" fill="currentColor"/><circle cx="6.8" cy="4.3" r=".55" fill="currentColor"/></svg><span class="count" hidden>04:00</span></span>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1.4" y="2.2" width="13.2" height="4.4" rx="2.2"/><rect x="1.4" y="9.4" width="13.2" height="4.4" rx="2.2"/><circle cx="5" cy="4.4" r="1.1" fill="currentColor" stroke="none"/><circle cx="11" cy="11.6" r="1.1" fill="currentColor" stroke="none"/></svg>
           <span>Mon Jun 10 9:41 AM</span>
         </div>
@@ -205,7 +251,7 @@
             <p class="nextday" hidden>Next day</p>
           </div>
           <button class="row" type="button" role="menuitemradio" data-mode="until" aria-checked="false">
-            <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.8" y="2.4" width="12.4" height="11.2" rx="1.7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.2 5.5h9.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.7" y="2.7" width="12.6" height="10.6" rx="2" fill="none" stroke="currentColor" stroke-width="1.25"/><path d="M3.2 5.85h9.6" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"/><circle cx="3.7" cy="4.3" r=".55" fill="currentColor"/><circle cx="5.25" cy="4.3" r=".55" fill="currentColor"/><circle cx="6.8" cy="4.3" r=".55" fill="currentColor"/></svg>
             <span>Until</span>
             <svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.6 10.4 8 6 12.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -376,7 +422,7 @@
     <section class="closing">
       <h2>Awake when you ask.<br>Asleep when you don’t.</h2>
       <p>A native menu bar app for macOS 13 or later.</p>
-      <span class="cta">Buy</span>
+      <a class="cta" href="https://www.creem.io/payment/prod_3vmGnYj2Nmk4Jv2wROBrJw">Buy for $5</a>
     </section>
 
   </div>
