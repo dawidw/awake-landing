@@ -229,16 +229,20 @@
           var h = Math.floor(mins / 60), m = mins % 60;
           return String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0");
         }
+        function setHidden(el, hide) {
+          if (hide) el.setAttribute("hidden", "");
+          else el.removeAttribute("hidden");
+        }
         function sync() {
           var mode = menu.querySelector("[data-mode].is-on").getAttribute("data-mode");
           var sunset = mode === "sunset";
           pill.querySelectorAll("svg").forEach(function (svg) {
-            svg.hidden = svg.getAttribute("data-bar") !== mode;
+            setHidden(svg, svg.getAttribute("data-bar") !== mode);
           });
           timer.hidden = !sunset;
           label.textContent = fmt(+slider.value);
           var show = sunset && menu.querySelector('[data-toggle="count"]').classList.contains("is-on");
-          count.hidden = !show;
+          setHidden(count, !show);
           count.textContent = label.textContent;
           pill.classList.toggle("wide", show);
         }
