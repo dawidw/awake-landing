@@ -9,15 +9,15 @@
 <meta name="author" content="Dawid Woźniak">
 <link rel="canonical" href="https://awake.dawidw.pl/">
 <meta name="theme-color" content="#000000">
-<link rel="icon" href="favicon.ico?v=2" sizes="any">
-<link rel="icon" href="favicon.png?v=2" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+<link rel="icon" href="favicon.ico?v=3" sizes="any">
+<link rel="icon" href="favicon.png?v=3" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Awake">
 <meta property="og:title" content="Awake: keep your Mac awake | menu bar app for macOS">
 <meta property="og:description" content="Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, or set a sunset timer. Start at login, an optional menu bar countdown, and appearance themes with accent colors.">
 <meta property="og:url" content="https://awake.dawidw.pl/">
-<meta property="og:image" content="https://awake.dawidw.pl/og-image.png?v=2">
+<meta property="og:image" content="https://awake.dawidw.pl/og-image.png?v=3">
 <meta property="og:image:width" content="2400">
 <meta property="og:image:height" content="1260">
 <meta property="og:image:alt" content="Awake for Mac. A sun held on the horizon, the icon of a menu bar app that keeps your Mac awake.">
@@ -25,9 +25,9 @@
 <meta name="twitter:creator" content="@Dawidwu">
 <meta name="twitter:title" content="Awake: keep your Mac awake | menu bar app for macOS">
 <meta name="twitter:description" content="Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, or set a sunset timer. Start at login, an optional menu bar countdown, and appearance themes with accent colors.">
-<meta name="twitter:image" content="https://awake.dawidw.pl/og-image.png?v=2">
+<meta name="twitter:image" content="https://awake.dawidw.pl/og-image.png?v=3">
 <meta name="twitter:image:alt" content="Awake for Mac. A sun held on the horizon, the icon of a menu bar app that keeps your Mac awake.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Awake", "description": "Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, or set a sunset timer. Start at login, an optional menu bar countdown, and appearance themes with accent colors. macOS 13 or later. One-time purchase, no subscription.", "url": "https://awake.dawidw.pl/", "image": "https://awake.dawidw.pl/og-image.png?v=2", "operatingSystem": "macOS", "applicationCategory": "UtilitiesApplication", "author": {"@type": "Person", "name": "Dawid Woźniak", "url": "https://dawidw.pl"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Awake", "description": "Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, or set a sunset timer. Start at login, an optional menu bar countdown, and appearance themes with accent colors. macOS 13 or later. One-time purchase, no subscription.", "url": "https://awake.dawidw.pl/", "image": "https://awake.dawidw.pl/og-image.png?v=3", "operatingSystem": "macOS", "applicationCategory": "UtilitiesApplication", "author": {"@type": "Person", "name": "Dawid Woźniak", "url": "https://dawidw.pl"}}</script>
 <style>
   :root { --bg:#000; --fg:#f5f5f7; --muted:#8e8e93; --line:#1c1c1e; --card:#0b0b0c; --accent:#ff9f0a; }
   * { box-sizing:border-box; margin:0; padding:0; }
@@ -50,9 +50,12 @@
   .note { margin-top:14px; font-size:13px; color:var(--muted); }
   @media (prefers-reduced-motion: reduce) { .cta, .cta:hover { transform:none; transition:none; } }
 
-  .demo { margin:64px auto 0; }
+  .demo { margin:64px auto 0; max-width:820px; }
   .shot { display:block; width:100%; height:auto; border-radius:22px; box-shadow:0 30px 80px -36px rgba(0,0,0,.8); }
   .demo figcaption { margin-top:14px; text-align:center; font-size:13px; color:var(--muted); }
+  .credit { margin-top:2px; text-align:center; font-size:13px; color:var(--muted); }
+  .credit a { color:var(--fg); text-decoration:underline; text-decoration-style:dotted; text-underline-offset:3px; }
+  .credit a:hover { color:#fff; }
 
   .features { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; padding-top:112px; padding-bottom:24px; }
   .f { border:1px solid var(--line); border-radius:16px; padding:28px 24px 26px; background:var(--card); }
@@ -113,12 +116,12 @@
 <body>
   <div class="wrap">
     <nav>
-      <a class="brand" href="https://awake.dawidw.pl/"><img src="icon.png?v=2" width="26" height="26" alt="">Awake</a>
+      <a class="brand" href="https://awake.dawidw.pl/"><img src="icon.png?v=3" width="26" height="26" alt="">Awake</a>
       <span class="buy">Buy</span>
     </nav>
 
     <header class="hero">
-      <img class="mark" src="icon.png?v=2" width="84" height="84" alt="">
+      <img class="mark" src="icon.png?v=3" width="84" height="84" alt="">
       <h1>Awake</h1>
       <p class="tagline">Keep your Mac awake when you need it</p>
       <p class="lead">Leave it on, or let a sunset timer end the session. <b>Small, native, and calm.</b></p>
@@ -127,8 +130,9 @@
     </header>
 
     <figure class="demo">
-      <img class="shot" src="assets/menu-hero.png" alt="The Awake menu open on a Mac desktop: On, Off, Sunset, Start at login, Countdown in menu, Appearance, and Quit." width="1136" height="986">
+      <img class="shot" src="assets/menu-hero.jpg" alt="The Awake menu open on a Mac desktop: On, Off, Sunset, Start at login, Countdown in menu, Appearance, and Quit." width="2048" height="1778">
       <figcaption>Open from the menu bar.</figcaption>
+      <p class="credit">Wallpaper from <a href="https://studyofspace.gallery" target="_blank" rel="noopener">Study of Space</a> app.</p>
     </figure>
 
     <section class="features" aria-label="Features">
