@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Awake: keep your Mac awake | menu bar app for macOS</title>
-<meta name="description" content="Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, or set a sunset timer. Start at login, an optional menu bar countdown, and appearance themes with accent colors. macOS 13 or later. One-time purchase, no subscription.">
+<meta name="description" content="Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, set a sunset, or stay awake while an app is running. Start at login, a menu bar countdown, and settings for a shortcut, display sleep, and battery. macOS 13 or later. One-time purchase, no subscription.">
 <meta name="keywords" content="macOS keep awake, keep Mac awake, menu bar app, prevent sleep, sunset timer, start at login, menu bar countdown, macOS utility, Awake">
 <meta name="author" content="Dawid Woźniak">
 <link rel="canonical" href="https://awake.dawidw.pl/">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Awake">
 <meta property="og:title" content="Awake: keep your Mac awake | menu bar app for macOS">
-<meta property="og:description" content="Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, or set a sunset timer. Start at login, an optional menu bar countdown, and appearance themes with accent colors.">
+<meta property="og:description" content="Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, set a sunset, or stay awake while an app is running. Start at login, a menu bar countdown, and settings for a shortcut, display sleep, and battery.">
 <meta property="og:url" content="https://awake.dawidw.pl/">
 <meta property="og:image" content="https://awake.dawidw.pl/og-image.png?v=5">
 <meta property="og:image:width" content="2400">
@@ -24,10 +24,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@Dawidwu">
 <meta name="twitter:title" content="Awake: keep your Mac awake | menu bar app for macOS">
-<meta name="twitter:description" content="Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, or set a sunset timer. Start at login, an optional menu bar countdown, and appearance themes with accent colors.">
+<meta name="twitter:description" content="Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, set a sunset, or stay awake while an app is running. Start at login, a menu bar countdown, and settings for a shortcut, display sleep, and battery.">
 <meta name="twitter:image" content="https://awake.dawidw.pl/og-image.png?v=5">
 <meta name="twitter:image:alt" content="Awake for Mac. A sun held on the horizon, the icon of a menu bar app that keeps your Mac awake.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Awake", "description": "Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, or set a sunset timer. Start at login, an optional menu bar countdown, and appearance themes with accent colors. macOS 13 or later. One-time purchase, no subscription.", "url": "https://awake.dawidw.pl/", "image": "https://awake.dawidw.pl/og-image.png?v=5", "operatingSystem": "macOS", "applicationCategory": "UtilitiesApplication", "author": {"@type": "Person", "name": "Dawid Woźniak", "url": "https://dawidw.pl"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Awake", "description": "Awake is a macOS menu bar app that keeps your Mac awake. Leave it on, turn it off, set a sunset, or stay awake while an app is running. Start at login, a menu bar countdown, and settings for a shortcut, display sleep, and battery. macOS 13 or later. One-time purchase, no subscription.", "url": "https://awake.dawidw.pl/", "image": "https://awake.dawidw.pl/og-image.png?v=5", "operatingSystem": "macOS", "applicationCategory": "UtilitiesApplication", "author": {"@type": "Person", "name": "Dawid Woźniak", "url": "https://dawidw.pl"}}</script>
 <style>
   :root { --bg:#000; --fg:#f5f5f7; --muted:#8e8e93; --line:#1c1c1e; --card:#0b0b0c; --accent:#ff9f0a; }
   * { box-sizing:border-box; margin:0; padding:0; }
@@ -64,7 +64,7 @@
   .row .ico-off { display:none; }
   .row:not(.is-on) .ico-on { display:none; }
   .row:not(.is-on) .ico-off { display:block; }
-  .timer { display:flex; flex-direction:column; gap:8px; margin:8px 6px 12px; color:#8e8e93; font-size:11px; }
+  .timer { display:flex; flex-direction:column; gap:4px; margin:4px 6px 4px; color:#8e8e93; font-size:11px; }
   .timer[hidden] { display:none; }
   .timer-top { display:flex; justify-content:space-between; align-items:baseline; }
   .timer input { width:100%; appearance:none; height:14px; margin:0; background:transparent; cursor:default; }
@@ -73,6 +73,14 @@
   .timer input::-moz-range-track { height:3px; border:0; border-radius:2px; background:#6b6b70; }
   .timer input::-moz-range-thumb { width:14px; height:14px; border:0; border-radius:50%; background:#f9faf7; }
   .timer .tval { color:#f9faf7; font-variant-numeric:tabular-nums; }
+  .endat { display:flex; justify-content:space-between; align-items:center; gap:6px; }
+  .endat-ctrl { display:flex; align-items:center; gap:1px; color:#f9faf7; }
+  .endval { font-variant-numeric:tabular-nums; min-width:52px; text-align:center; }
+  .step { appearance:none; border:0; padding:0 2px; background:transparent; color:inherit; font:inherit; font-size:13px; line-height:1; cursor:default; }
+  .step:hover, .step:focus, .step:focus-visible { color:#fff; outline:none; }
+  .nextday { margin:0; text-align:right; font-size:10px; letter-spacing:-0.01em; }
+  .nextday[hidden] { display:none; }
+  .row .chev { width:8px; height:8px; margin-left:auto; }
   .bar .count { font-size:11px; font-weight:600; letter-spacing:-0.02em; }
   .bar .count[hidden] { display:none; }
   .bar .pill.wide { width:auto; gap:4px; padding:0 7px; }
@@ -135,7 +143,7 @@
     .wrap { padding:0 20px; }
     .hero { padding-top:36px; }
     .hero .mark { width:72px; height:72px; margin-bottom:22px; }
-    .desk { border-radius:18px; }
+    .desk { border-radius:18px; aspect-ratio:auto; height:400px; }
     .menu { right:10px; }
     .features { grid-template-columns:1fr; padding-top:64px; }
     .closing { padding-top:64px; padding-bottom:72px; }
@@ -156,7 +164,7 @@
       <img class="mark" src="icon.png?v=5" width="84" height="84" alt="">
       <h1>Awake</h1>
       <p class="tagline">Keep your Mac awake when you need it</p>
-      <p class="lead">Leave it on, or let a sunset timer end the session. <b>Small, native, and calm.</b></p>
+      <p class="lead">Leave it on, set a sunset, or stay awake while an app is running. <b>Small, native, and calm.</b></p>
       <span class="cta">Buy</span>
       <p class="note">Requires macOS 13 or later. One-time purchase, no subscription.</p>
     </header>
@@ -165,7 +173,7 @@
       <div class="desk">
         <div class="bar" aria-hidden="true">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M1.5 6.2a8 8 0 0 1 13 0"/><path d="M3.6 8.4a5 5 0 0 1 8.8 0"/><path d="M6 10.6a2.2 2.2 0 0 1 4 0"/><circle cx="8" cy="13" r=".8" fill="currentColor" stroke="none"/></svg>
-          <span class="pill"><svg data-bar="on" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="2.5"/><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 1.6v1.7M8 12.7v1.7M1.6 8h1.7M12.7 8h1.7M3.4 3.4l1.2 1.2M11.4 11.4l1.2 1.2M12.6 3.4l-1.2 1.2M4.6 11.4l-1.2 1.2"/></g></svg><svg data-bar="off" viewBox="0 0 16 16" hidden><path fill="currentColor" d="M9.1 2.1a5.3 5.3 0 1 0 4.7 8.2A4.5 4.5 0 1 1 9.1 2.1z"/></svg><svg data-bar="sunset" viewBox="0 0 16 16" hidden><path fill="currentColor" d="M4.1 12.2a3.9 3.9 0 0 1 7.8 0H4.1z"/><path fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M2.8 12.2h10.4M8 3.4v1.8M5.1 5.3l1.15 1.15M10.9 5.3l-1.15 1.15"/></svg><span class="count" hidden>04:00</span></span>
+          <span class="pill"><svg data-bar="on" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="2.5"/><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 1.6v1.7M8 12.7v1.7M1.6 8h1.7M12.7 8h1.7M3.4 3.4l1.2 1.2M11.4 11.4l1.2 1.2M12.6 3.4l-1.2 1.2M4.6 11.4l-1.2 1.2"/></g></svg><svg data-bar="off" viewBox="0 0 16 16" hidden><path fill="currentColor" d="M9.1 2.1a5.3 5.3 0 1 0 4.7 8.2A4.5 4.5 0 1 1 9.1 2.1z"/></svg><svg data-bar="sunset" viewBox="0 0 16 16" hidden><path fill="currentColor" d="M4.1 12.2a3.9 3.9 0 0 1 7.8 0H4.1z"/><path fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" d="M2.8 12.2h10.4M8 3.4v1.8M5.1 5.3l1.15 1.15M10.9 5.3l-1.15 1.15"/></svg><svg data-bar="until" viewBox="0 0 16 16" hidden><rect x="1.8" y="2.4" width="12.4" height="11.2" rx="1.7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.2 5.5h9.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span class="count" hidden>04:00</span></span>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1.4" y="2.2" width="13.2" height="4.4" rx="2.2"/><rect x="1.4" y="9.4" width="13.2" height="4.4" rx="2.2"/><circle cx="5" cy="4.4" r="1.1" fill="currentColor" stroke="none"/><circle cx="11" cy="11.6" r="1.1" fill="currentColor" stroke="none"/></svg>
           <span>Mon Jun 10 9:41 AM</span>
         </div>
@@ -186,7 +194,21 @@
           <div class="timer" hidden>
             <div class="timer-top"><span>Timer</span><span class="tval">04:00</span></div>
             <input type="range" min="15" max="600" step="15" value="240" aria-label="Timer">
+            <div class="endat">
+              <span>End at</span>
+              <span class="endat-ctrl">
+                <button class="step" type="button" data-step="-15" aria-label="15 minutes earlier">−</button>
+                <span class="endval">1:45 PM</span>
+                <button class="step" type="button" data-step="15" aria-label="15 minutes later">+</button>
+              </span>
+            </div>
+            <p class="nextday" hidden>Next day</p>
           </div>
+          <button class="row" type="button" role="menuitemradio" data-mode="until" aria-checked="false">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.8" y="2.4" width="12.4" height="11.2" rx="1.7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.2 5.5h9.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            <span>Until</span>
+            <svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.6 10.4 8 6 12.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
           <div class="sep"></div>
           <button class="row is-on" type="button" role="menuitemcheckbox" data-toggle="login" aria-checked="true">
             <svg class="ico-on" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.3" fill="currentColor"/></svg>
@@ -200,8 +222,8 @@
           </button>
           <div class="sep"></div>
           <button class="row" type="button" role="menuitem">
-            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1"><rect x="2.2" y="2.2" width="11.6" height="11.6" rx="2.4" stroke-dasharray="1.5 1.15"/><rect x="5" y="5" width="6" height="6" rx="1.3"/></svg>
-            <span>Appearance</span>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M6.19 4.04 6.65 1.95h2.7l.46 2.09.71.41 2.04-.65 1.36 2.35-1.59 1.44v.82l1.59 1.44-1.36 2.35-2.04-.65-.71.41L9.35 14.05h-2.7l-.46-2.09-.71-.41-2.04.65L2.08 9.85l1.59-1.44v-.82L2.08 6.15l1.36-2.35 2.04.65.71-.41zM9.7 8A1.7 1.7 0 1 0 6.3 8 1.7 1.7 0 1 0 9.7 8z"/></svg>
+            <span>Settings</span>
             <kbd>⌘,</kbd>
           </button>
           <button class="row" type="button" role="menuitem">
@@ -223,11 +245,28 @@
         var timer = menu.querySelector(".timer");
         var slider = timer.querySelector("input");
         var label = timer.querySelector(".tval");
+        var endVal = timer.querySelector(".endval");
+        var nextDay = timer.querySelector(".nextday");
         var count = document.querySelector(".bar .count");
         var pill = document.querySelector(".bar .pill");
+        var nowMin = 9 * 60 + 41;
+        var endMin = 13 * 60 + 45;
         function fmt(mins) {
           var h = Math.floor(mins / 60), m = mins % 60;
           return String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0");
+        }
+        function fmtClock(mins) {
+          mins = ((mins % 1440) + 1440) % 1440;
+          var h24 = Math.floor(mins / 60), m = mins % 60;
+          var ap = h24 >= 12 ? "PM" : "AM";
+          var h = h24 % 12;
+          if (h === 0) h = 12;
+          return h + ":" + String(m).padStart(2, "0") + " " + ap;
+        }
+        function syncEnd() {
+          var mins = ((endMin % 1440) + 1440) % 1440;
+          endVal.textContent = fmtClock(mins);
+          setHidden(nextDay, mins >= nowMin);
         }
         function setHidden(el, hide) {
           if (hide) el.setAttribute("hidden", "");
@@ -241,6 +280,7 @@
           });
           timer.hidden = !sunset;
           label.textContent = fmt(+slider.value);
+          syncEnd();
           var show = sunset && menu.querySelector('[data-toggle="count"]').classList.contains("is-on");
           setHidden(count, !show);
           count.textContent = label.textContent;
@@ -265,6 +305,12 @@
           });
         });
         slider.addEventListener("input", sync);
+        timer.querySelectorAll("[data-step]").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            endMin = (endMin + (+btn.getAttribute("data-step")) + 1440) % 1440;
+            syncEnd();
+          });
+        });
         sync();
       })();
     </script>
@@ -286,6 +332,16 @@
         <p>A timer, instead of forever. When it ends, Awake lets the Mac sleep.</p>
       </article>
       <article class="f">
+        <div class="ic" aria-hidden="true"><img src="assets/sf/clock.png" alt="" width="32" height="32"></div>
+        <h3>End at</h3>
+        <p>A time of day, in 15-minute steps. If that time has passed, it ends tomorrow.</p>
+      </article>
+      <article class="f">
+        <div class="ic" aria-hidden="true"><img src="assets/sf/macwindow.png" alt="" width="32" height="32"></div>
+        <h3>Until</h3>
+        <p>Awake while a chosen app is running. When that app quits, Awake turns off.</p>
+      </article>
+      <article class="f">
         <div class="ic" aria-hidden="true"><img src="assets/sf/radio-on.png" alt="" width="32" height="32"></div>
         <h3>Start at login</h3>
         <p>Awake is already in the menu bar when you sign in.</p>
@@ -296,9 +352,24 @@
         <p>Show the time left beside the icon. Hide it when you want the bar quiet.</p>
       </article>
       <article class="f">
-        <div class="ic" aria-hidden="true"><img src="assets/sf/appearance.png" alt="" width="32" height="32"></div>
-        <h3>Appearance</h3>
-        <p>Themes and accent colors for the menu. The one above uses a white accent.</p>
+        <div class="ic" aria-hidden="true"><img src="assets/sf/command.png" alt="" width="32" height="32"></div>
+        <h3>Shortcut</h3>
+        <p>Switches between off and your last On, Sunset, or Until. Escape cancels. Clear removes it.</p>
+      </article>
+      <article class="f">
+        <div class="ic" aria-hidden="true"><img src="assets/sf/display.png" alt="" width="32" height="32"></div>
+        <h3>Allow display sleep</h3>
+        <p>The display can sleep. The Mac stays awake.</p>
+      </article>
+      <article class="f">
+        <div class="ic" aria-hidden="true"><img src="assets/sf/battery.png" alt="" width="32" height="32"></div>
+        <h3>Turn off on battery</h3>
+        <p>On battery, Awake turns off. Plugging in does not turn it back on.</p>
+      </article>
+      <article class="f">
+        <div class="ic" aria-hidden="true"><img src="assets/sf/gearshape.png" alt="" width="32" height="32"></div>
+        <h3>Settings</h3>
+        <p>Themes and accent colors for the menu. The one above uses a white accent. Check for Updates is in this window.</p>
       </article>
     </section>
 

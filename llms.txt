@@ -1,17 +1,22 @@
 # Awake
 
-> Awake is a tiny native macOS menu bar app that keeps your Mac awake. Turn it on, turn it off, or set a sunset timer that ends on its own. Start at login, show a countdown in the menu bar, and pick a theme with an accent color. Requires macOS 13 or later.
+> Awake is a tiny native macOS menu bar app that keeps your Mac awake. Turn it on, turn it off, set a sunset, or stay awake while an app is running. Start at login, show a countdown in the menu bar, and adjust settings for a shortcut, display sleep, and battery. Requires macOS 13 or later.
 
-Awake is an independent app built by Dawid Woźniak and Sature. It keeps the screen awake locally and does not collect or send user data.
+Awake is an independent app built by Dawid Woźniak and Sature. It keeps your Mac awake on the machine and does not collect or send user data.
 
 ## What it does
 
 - On: keep the Mac awake until you turn it off
 - Off: return to normal sleep
 - Sunset: a timer that ends the session, up to 10 hours
+- End at: a time of day, in 15-minute steps. A time already past ends the next day
+- Until: stay awake while a chosen app is running, then return to Off
 - Start at login
 - Optional countdown in the menu bar
-- Appearance: Theme 1, 2 and 3, with highlight colors White, Green, Purple and Blue
+- Shortcut: switch between Off and the last On, Sunset, or Until
+- Allow display sleep: the display can sleep while the Mac stays awake
+- Turn off on battery: Awake turns off on battery and stays off when power returns
+- Settings: Theme 1, 2 and 3, with highlight colors White, Green, Purple and Blue. Check for Updates is in this window
 
 ## Product
 
