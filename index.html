@@ -51,45 +51,13 @@
   @media (prefers-reduced-motion: reduce) { .cta, .cta:hover { transform:none; transition:none; } }
 
   .demo { margin:64px auto 0; }
-  .desk { position:relative; aspect-ratio:16/9; border-radius:26px; overflow:hidden; background:#0c1424 url("assets/wallpaper.jpg") center/cover no-repeat; box-shadow:0 30px 80px -36px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.06); user-select:none; }
-  .desk .wall { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
-  .bar { position:absolute; z-index:2; top:0; left:0; right:0; height:36px; display:flex; align-items:center; justify-content:space-between; padding:0 14px 0 16px; background:rgba(8,10,18,.42); color:#fff; font-size:13px; font-weight:500; letter-spacing:-0.01em; border-bottom:1px solid rgba(255,255,255,.06); }
-  .bar .left, .bar .right { display:flex; align-items:center; gap:16px; min-width:0; }
-  .bar .right { gap:10px; }
-  .bar .apple { display:flex; width:14px; height:17px; }
-  .bar .apple svg { width:14px; height:17px; display:block; }
-  .bar strong { font-weight:650; letter-spacing:-0.02em; }
-  .bar .ghost { color:rgba(255,255,255,.92); font-weight:500; }
-  .bar .sys { width:16px; height:16px; display:block; }
-  .bar .status { display:flex; align-items:center; justify-content:center; width:26px; height:22px; border-radius:6px; background:rgba(255,255,255,.18); }
-  .bar .status svg { width:15px; height:15px; display:block; }
-  .bar .clock { font-variant-numeric:tabular-nums; font-weight:500; min-width:72px; text-align:right; }
-
-  /* Theme 1: white accent. Shortcuts and empty radios share one muted. */
-  .menu {
-    --mm: rgba(255,255,255,.62);
-    position:absolute; z-index:3; top:42px; right:168px; width:272px;
-    padding:5px; border-radius:12px;
-    background:#363638; color:#fff;
-    border:1px solid rgba(255,255,255,.08);
-    box-shadow:0 24px 60px rgba(0,0,0,.48), 0 2px 8px rgba(0,0,0,.35);
-    font:13px/1.15 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
-  }
-  .menu h2 { font-size:13px; font-weight:700; letter-spacing:-0.015em; padding:7px 10px 8px; color:#fff; }
-  .row { display:flex; align-items:center; gap:8px; min-height:26px; padding:0 10px; border-radius:6px; white-space:nowrap; color:#f5f5f7; }
-  .slot { width:16px; height:16px; flex:none; display:flex; align-items:center; justify-content:center; }
-  .slot svg { width:15px; height:15px; display:block; }
-  .sep { height:1px; margin:5px 8px; background:rgba(255,255,255,.14); }
-  .radio { width:13px; height:13px; border-radius:50%; border:1.5px solid var(--mm); background:transparent; flex:none; }
-  .radio.on { background:#fff; border-color:#fff; }
-  .kbd { margin-left:auto; padding-left:12px; color:var(--mm); font-weight:500; font-size:13px; letter-spacing:.01em; }
-
+  .shot { display:block; width:100%; height:auto; border-radius:22px; box-shadow:0 30px 80px -36px rgba(0,0,0,.8); }
   .demo figcaption { margin-top:14px; text-align:center; font-size:13px; color:var(--muted); }
 
   .features { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; padding-top:112px; padding-bottom:24px; }
   .f { border:1px solid var(--line); border-radius:16px; padding:28px 24px 26px; background:var(--card); }
-  .f .ic { height:52px; display:flex; align-items:flex-end; margin-bottom:22px; color:#fff; }
-  .f .ic svg { width:30px; height:30px; display:block; }
+  .f .ic { height:52px; display:flex; align-items:flex-end; margin-bottom:22px; }
+  .f .ic img { width:32px; height:32px; object-fit:contain; object-position:left bottom; }
   .f h3 { font-size:17px; font-weight:600; letter-spacing:-0.015em; }
   .f p { margin-top:8px; color:var(--muted); font-size:15px; }
 
@@ -133,9 +101,7 @@
     .wrap { padding:0 20px; }
     .hero { padding-top:36px; }
     .hero .mark { width:72px; height:72px; margin-bottom:22px; }
-    .bar .ghost { display:none; }
-    .desk { aspect-ratio:auto; height:500px; border-radius:20px; }
-    .menu { left:16px; right:16px; width:auto; max-width:280px; margin-left:auto; }
+    .shot { border-radius:18px; }
     .features { grid-template-columns:1fr; padding-top:64px; }
     .closing { padding-top:64px; padding-bottom:72px; }
     .ftop { flex-direction:column; align-items:flex-start; }
@@ -161,140 +127,38 @@
     </header>
 
     <figure class="demo">
-      <div class="desk">
-        <img class="wall" src="assets/wallpaper.jpg" alt="" width="2400" height="1350">
-        <div class="bar">
-          <div class="left">
-            <span class="apple" aria-hidden="true"><svg viewBox="0 0 14 17" fill="#fff"><path d="M11.4 9.05c0-1.98 1.6-2.93 1.7-3.02-.94-1.32-2.36-1.51-2.84-1.6-1.23-.1-2.36.75-2.93.75-.66 0-1.6-.75-2.55-.66C3.6 4.6 2.36 5.36 1.7 6.58c-1.5 2.55-.38 6.32 1.04 8.4.75 1.04 1.51 2.17 2.64 2.08 1.04-.05 1.42-.66 2.64-.66s1.6.66 2.64.66c1.13 0 1.8-1.04 2.45-2.08.75-1.13 1.13-2.26 1.13-2.36 0-.05-2.17-.85-2.17-3.3zM9.4 3.2c.57-.66.94-1.6.85-2.55-.85.05-1.8.57-2.36 1.23-.57.57-.94 1.51-.85 2.45.9.1 1.8-.47 2.36-1.13z"/></svg></span>
-            <strong>Awake</strong>
-            <span class="ghost">File</span>
-            <span class="ghost">Edit</span>
-            <span class="ghost">View</span>
-            <span class="ghost">Window</span>
-          </div>
-          <div class="right">
-            <span class="status" aria-hidden="true">
-              <svg viewBox="0 0 16 16">
-                <g fill="none" stroke="#fff" stroke-width="1.35" stroke-linecap="round">
-                  <path d="M8 2.15v1.45"/>
-                  <path d="M5.15 3.35 6.15 4.35"/>
-                  <path d="M10.85 3.35 9.85 4.35"/>
-                </g>
-                <path fill="#fff" d="M5.55 9.15a2.45 2.45 0 0 1 4.9 0z"/>
-                <path fill="none" stroke="#fff" stroke-width="1.35" stroke-linecap="round" d="M2.4 9.15h11.2"/>
-              </svg>
-            </span>
-            <svg class="sys" viewBox="0 0 16 16" aria-hidden="true"><path fill="#fff" d="M8 12.6 6.3 10.6a2.6 2.6 0 0 1 3.4 0zM4.1 8.4l1.15 1.4a4.3 4.3 0 0 1 5.5 0l1.15-1.4a6.2 6.2 0 0 0-7.8 0zM1.6 5.6l1.15 1.4a8 8 0 0 1 10.5 0l1.15-1.4a10 10 0 0 0-12.8 0z"/></svg>
-            <svg class="sys" viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="4" width="12.2" height="8" rx="1.6" fill="none" stroke="#fff" stroke-width="1.3"/><rect x="2.3" y="5.5" width="7.2" height="5" rx=".6" fill="#fff"/><path fill="#fff" d="M14 6.4h.6c.4 0 .7.3.7.7v1.8c0 .4-.3.7-.7.7H14z"/></svg>
-            <span class="clock" id="clock">Thu 11:51</span>
-          </div>
-        </div>
-
-        <div class="menu">
-          <h2>Awake</h2>
-          <div class="row">
-            <span class="slot"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round">
-              <circle cx="8" cy="8" r="2.35"/>
-              <path d="M8 1.9v1.55M8 12.55v1.55M1.9 8h1.55M12.55 8h1.55M3.7 3.7l1.1 1.1M11.2 11.2l1.1 1.1M12.3 3.7l-1.1 1.1M4.8 11.2l-1.1 1.1"/>
-            </svg></span>
-            On
-          </div>
-          <div class="row">
-            <span class="slot"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8.85 1.85a4.7 4.7 0 1 0 5.05 6.35A4.05 4.05 0 0 1 8.85 1.85z"/></svg></span>
-            Off
-          </div>
-          <div class="row">
-            <span class="slot"><svg viewBox="0 0 16 16">
-              <g fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round">
-                <path d="M8 1.85v1.55"/>
-                <path d="M4.15 3.25 5.25 4.35"/>
-                <path d="M11.85 3.25 10.75 4.35"/>
-              </g>
-              <path fill="currentColor" d="M5.15 9.85a2.85 2.85 0 0 1 5.7 0z"/>
-              <path fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" d="M2.15 9.85h11.7"/>
-            </svg></span>
-            Sunset
-          </div>
-          <div class="sep"></div>
-          <div class="row">
-            <span class="slot"><span class="radio on"></span></span>
-            Start at login
-          </div>
-          <div class="row">
-            <span class="slot"><span class="radio"></span></span>
-            Countdown in menu
-          </div>
-          <div class="sep"></div>
-          <div class="row">
-            <span class="slot"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35">
-              <rect x="1.7" y="3.15" width="8.5" height="8.1" rx="1.7"/>
-              <path fill="currentColor" stroke="none" d="M12.15 1.7l.38 1.12 1.12.38-1.12.38-.38 1.12-.38-1.12-1.12-.38 1.12-.38z"/>
-            </svg></span>
-            Appearance
-            <span class="kbd">⌘,</span>
-          </div>
-          <div class="row">
-            <span class="slot"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-              <path d="M8 2.15v4.05"/>
-              <path d="M5.15 3.8a4.5 4.5 0 1 0 5.7 0"/>
-            </svg></span>
-            Quit
-            <span class="kbd">⌘Q</span>
-          </div>
-        </div>
-      </div>
+      <img class="shot" src="assets/menu-hero.png" alt="The Awake menu open on a Mac desktop: On, Off, Sunset, Start at login, Countdown in menu, Appearance, and Quit." width="1136" height="986">
       <figcaption>Open from the menu bar.</figcaption>
     </figure>
 
     <section class="features" aria-label="Features">
       <article class="f">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-          <circle cx="16" cy="16" r="5"/>
-          <path d="M16 4.5v2.8M16 24.7v2.8M4.5 16h2.8M24.7 16h2.8M7.6 7.6l2 2M22.4 22.4l2 2M24.4 7.6l-2 2M9.6 22.4l-2 2"/>
-        </svg></div>
+        <div class="ic" aria-hidden="true"><img src="assets/icons/on.png" alt="" width="32" height="32"></div>
         <h3>On</h3>
         <p>Leave it on. The Mac stays awake until you turn Awake off.</p>
       </article>
       <article class="f">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M18.2 4.2a9.2 9.2 0 1 0 9.4 12.6A8 8 0 0 1 18.2 4.2z"/></svg></div>
+        <div class="ic" aria-hidden="true"><img src="assets/icons/off.png" alt="" width="32" height="32"></div>
         <h3>Off</h3>
         <p>Turn it off and the Mac can sleep again, the way it did before.</p>
       </article>
       <article class="f">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 32 32">
-          <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-            <path d="M16 4.2v3"/>
-            <path d="M8.4 7.2 10.5 9.3"/>
-            <path d="M23.6 7.2 21.5 9.3"/>
-          </g>
-          <path fill="currentColor" d="M10.2 20.2a5.8 5.8 0 0 1 11.6 0z"/>
-          <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M5 20.2h22"/>
-        </svg></div>
+        <div class="ic" aria-hidden="true"><img src="assets/icons/sunset.png" alt="" width="32" height="32"></div>
         <h3>Sunset</h3>
         <p>A timer, instead of forever. When it ends, Awake lets the Mac sleep.</p>
       </article>
       <article class="f">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 7h10v18H14"/>
-          <path d="M6 16h12"/>
-          <path d="M14 12l4 4-4 4"/>
-        </svg></div>
+        <div class="ic" aria-hidden="true"><img src="assets/icons/login.png" alt="" width="32" height="32"></div>
         <h3>Start at login</h3>
         <p>Awake is already in the menu bar when you sign in.</p>
       </article>
       <article class="f">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-          <circle cx="16" cy="16" r="9"/>
-          <path d="M16 11.2V16l3.2 2"/>
-        </svg></div>
+        <div class="ic" aria-hidden="true"><img src="assets/icons/countdown.png" alt="" width="32" height="32"></div>
         <h3>Countdown in the menu bar</h3>
         <p>Show the time left beside the icon. Hide it when you want the bar quiet.</p>
       </article>
       <article class="f">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6">
-          <rect x="4" y="7" width="16" height="16" rx="3.2"/>
-          <path fill="currentColor" stroke="none" d="M23.2 5.2l.7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7z"/>
-        </svg></div>
+        <div class="ic" aria-hidden="true"><img src="assets/icons/appearance.png" alt="" width="32" height="32"></div>
         <h3>Appearance</h3>
         <p>Themes and accent colors for the menu. The one above uses a white accent.</p>
       </article>
@@ -325,40 +189,5 @@
       </div>
     </div>
   </footer>
-  <script>
-    (function () {
-      var el = document.getElementById("clock");
-      var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-      function tick() {
-        var d = new Date();
-        var h = d.getHours();
-        var m = String(d.getMinutes()).padStart(2, "0");
-        el.textContent = days[d.getDay()] + " " + h + ":" + m;
-      }
-      tick();
-      setInterval(tick, 30000);
-      var desk = document.querySelector(".desk");
-      var status = document.querySelector(".status");
-      var menu = document.querySelector(".menu");
-      function place() {
-        var dr = desk.getBoundingClientRect();
-        var sr = status.getBoundingClientRect();
-        var gap = 6;
-        menu.style.top = (sr.bottom - dr.top + gap) + "px";
-        menu.style.left = "auto";
-        menu.style.width = "272px";
-        var right = dr.right - sr.right;
-        if (dr.width - right - 272 < 16) {
-          menu.style.right = "16px";
-          menu.style.left = "16px";
-          menu.style.width = "auto";
-        } else {
-          menu.style.right = right + "px";
-        }
-      }
-      place();
-      window.addEventListener("resize", place);
-    })();
-  </script>
 </body>
 </html>
