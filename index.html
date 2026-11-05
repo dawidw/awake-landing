@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Awake: keep your Mac awake | menu bar app for macOS</title>
+<meta name="description" content="Awake is a tiny macOS menu bar app that keeps your Mac awake. Leave it on, or set a sunset timer. macOS 13 or later. One-time purchase, no subscription.">
+<meta name="keywords" content="macOS keep awake, keep Mac awake, menu bar app, prevent sleep, stop Mac from sleeping, keep display awake, macOS utility, sunset timer, Awake">
+<meta name="author" content="Dawid Woźniak">
+<link rel="canonical" href="https://awake.dawidw.pl/">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Awake">
+<meta property="og:title" content="Awake: keep your Mac awake | menu bar app for macOS">
+<meta property="og:description" content="Awake is a tiny macOS menu bar app that keeps your Mac awake. Leave it on, or set a sunset timer. macOS 13 or later. One-time purchase, no subscription.">
+<meta property="og:url" content="https://awake.dawidw.pl/">
+<meta property="og:image" content="https://awake.dawidw.pl/og-image.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Awake for Mac: a menu bar app that keeps your Mac awake, with on, off, and sunset.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@Dawidwu">
+<meta name="twitter:title" content="Awake: keep your Mac awake | menu bar app for macOS">
+<meta name="twitter:description" content="Awake is a tiny macOS menu bar app that keeps your Mac awake. Leave it on, or set a sunset timer. macOS 13 or later. One-time purchase, no subscription.">
+<meta name="twitter:image" content="https://awake.dawidw.pl/og-image.png">
+<meta name="twitter:image:alt" content="Awake for Mac: a menu bar app that keeps your Mac awake, with on, off, and sunset.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Awake", "description": "Awake is a tiny macOS menu bar app that keeps your Mac awake. Leave it on, or set a sunset timer. macOS 13 or later. One-time purchase, no subscription.", "url": "https://awake.dawidw.pl/", "image": "https://awake.dawidw.pl/og-image.png", "operatingSystem": "macOS", "applicationCategory": "UtilitiesApplication", "author": {"@type": "Person", "name": "Dawid Woźniak", "url": "https://dawidw.pl"}}</script>
+<style>
+  :root { --bg:#000; --fg:#f5f5f7; --muted:#8e8e93; --line:#2a2a2c; --card:#1f1f21; --accent:#0A84FF; --hi:#00AF7D; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { background:var(--bg); color:var(--fg); font:16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 28px; }
+  nav { display:flex; justify-content:space-between; align-items:center; height:72px; }
+  nav .brand { display:flex; align-items:center; gap:8px; font-weight:600; letter-spacing:-0.01em; }
+  nav .brand img { width:22px; height:22px; border-radius:6px; display:block; }
+  nav .buy { color:#fff; font-size:14px; }
+  .hero { text-align:center; padding-top:96px; padding-bottom:48px; }
+  .hero h1 { font-size:clamp(44px, 8vw, 88px); line-height:1; letter-spacing:-0.04em; font-weight:700; }
+  .hero .tagline { margin-top:10px; font-size:clamp(20px, 2.6vw, 26px); font-weight:600; letter-spacing:-0.02em; color:var(--accent); }
+  .hero p.lead { margin:24px auto 0; max-width:520px; font-size:clamp(18px, 2.2vw, 21px); color:var(--muted); }
+  .hero p.lead b { color:var(--fg); font-weight:500; }
+  .cta { display:inline-flex; align-items:center; gap:10px; margin-top:40px; padding:14px 26px; border-radius:999px; background:var(--accent); color:#fff; font-weight:600; font-size:16px; cursor:default; user-select:none; }
+  .cta { transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, background-color .2s ease; }
+  .note { margin-top:14px; font-size:13px; color:var(--muted); }
+  .demo { position:relative; margin:0 auto 80px; max-width:880px; height:420px; border-radius:22px; overflow:hidden; background:
+    radial-gradient(1200px 420px at 20% 10%, #3a2a1a 0%, transparent 50%),
+    radial-gradient(900px 400px at 90% 90%, #1a2a3a 0%, transparent 46%),
+    linear-gradient(160deg, #2a2230, #121418 55%, #1c1410); }
+  .demo::after { content:""; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; }
+  .menu { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:214px; padding:6px; border-radius:12px; background:#2c2c2e; border:1px solid rgba(255,255,255,0.08); box-shadow:0 24px 60px rgba(0,0,0,0.45); font:13px/1 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif; color:#f2f2f4; }
+  .menu h2 { font-size:13px; font-weight:700; letter-spacing:-0.01em; padding:6px 8px 8px; color:#fff; }
+  .row { display:flex; align-items:center; gap:8px; min-height:24px; padding:0 8px; border-radius:5px; color:#f2f2f4; }
+  .row svg.ic { width:14px; height:14px; flex:none; }
+  .row .grow { margin-left:auto; color:#8e8e93; font-size:12px; display:flex; align-items:center; }
+  .row .grow svg { width:8px; height:8px; }
+  .sep { height:1px; background:rgba(255,255,255,0.12); margin:5px 8px; }
+  .radio { width:12px; height:12px; border-radius:50%; box-shadow:inset 0 0 0 1.4px #8e8e93; flex:none; }
+  .radio.on { background:#fff; box-shadow:none; }
+  .feats { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; padding:0 0 96px; }
+  .feats h3 { font-size:18px; font-weight:600; letter-spacing:-0.02em; margin-bottom:8px; }
+  .feats p { color:var(--muted); font-size:15px; }
+  footer { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:28px 0 48px; border-top:1px solid #161616; color:var(--muted); font-size:13px; }
+  footer a { text-decoration:underline; text-decoration-style:dotted; text-underline-offset:3px; }
+  footer a:hover { color:var(--fg); }
+  @media (max-width:760px) {
+    .feats { grid-template-columns:1fr; }
+    .hero { padding-top:64px; }
+    .demo { height:380px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="https://awake.dawidw.pl/"><img src="icon.png" width="22" height="22" alt="">Awake</a>
+      <span class="buy">Buy</span>
+    </nav>
+    <header class="hero">
+      <h1>Awake</h1>
+      <p class="tagline">Keep your Mac awake when you need it</p>
+      <p class="lead">A tiny menu bar app with a permanent mode or timed sunset sessions. <b>Small, native, and calm.</b></p>
+      <span class="cta">Buy</span>
+      <p class="note">Requires macOS 13 or later. One-time purchase, no subscription.</p>
+    </header>
+  </div>
+  <div class="wrap">
+    <div class="demo" aria-hidden="true">
+      <div class="menu">
+        <h2>Awake</h2>
+        <div class="row">
+          <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+            <circle cx="8" cy="8" r="2.3"/>
+            <path d="M8 1.85v1.7M8 12.45v1.7M1.85 8h1.7M12.45 8h1.7M3.65 3.65l1.2 1.2M11.15 11.15l1.2 1.2M12.35 3.65l-1.2 1.2M4.85 11.15l-1.2 1.2"/>
+          </svg>
+          On
+        </div>
+        <div class="row">
+          <svg class="ic" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8.9 1.9a4.85 4.85 0 1 0 5.15 6.55A4.15 4.15 0 0 1 8.9 1.9z"/>
+          </svg>
+          Off
+        </div>
+        <div class="row">
+          <svg class="ic" viewBox="0 0 16 16">
+            <g fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round">
+              <path d="M8 1.55v2.15"/>
+              <path d="M3.55 3.35 4.9 4.9"/>
+              <path d="M12.45 3.35 11.1 4.9"/>
+              <path d="M2.15 10.35h11.7"/>
+            </g>
+            <path fill="currentColor" d="M4.05 10.2a3.95 3.95 0 0 1 7.9 0H4.05z"/>
+          </svg>
+          Sunset
+        </div>
+        <div class="sep"></div>
+        <div class="row">
+          <span class="radio on"></span>
+          Start at login
+        </div>
+        <div class="row">
+          <span class="radio"></span>
+          Countdown in menu
+        </div>
+        <div class="sep"></div>
+        <div class="row">
+          <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="1.8" y="3.1" width="8.6" height="8.2" rx="1.6"/>
+            <path fill="currentColor" stroke="none" d="M12.15 1.7l.4 1.15 1.15.4-1.15.4-.4 1.15-.4-1.15-1.15-.4 1.15-.4z"/>
+          </svg>
+          Appearance
+          <span class="grow"><svg viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 1.4 5.4 4 2.6 6.6"/></svg></span>
+        </div>
+        <div class="row">
+          <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+            <path d="M8 2.2v4.1"/>
+            <path d="M5.15 3.85a4.55 4.55 0 1 0 5.7 0"/>
+          </svg>
+          Quit
+          <span class="grow">⌘Q</span>
+        </div>
+      </div>
+    </div>
+    <section class="feats">
+      <div>
+        <h3>On, off, or sunset</h3>
+        <p>Keep the display awake for good, turn it off, or set a countdown that winds down on its own.</p>
+      </div>
+      <div>
+        <h3>Lives in the menu bar</h3>
+        <p>A small icon, a countdown if you want it, and a menu that stays out of the way until you need it.</p>
+      </div>
+      <div>
+        <h3>Ready when you log in</h3>
+        <p>Start at login and pick an accent later. One look at launch, more themes if they earn their place.</p>
+      </div>
+    </section>
+    <footer>
+      <span>Awake</span>
+      <span>plain d. <a href="https://dawidw.pl">Dawid Woźniak</a></span>
+    </footer>
+  </div>
+</body>
+</html>

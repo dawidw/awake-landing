@@ -1,0 +1,14 @@
+# Awake
+
+> Awake is a tiny native macOS menu bar app that keeps your Mac awake. Turn it on, turn it off, or set a sunset timer that winds down on its own. Requires macOS 13 or later. One-time purchase, no subscription.
+
+Awake is an independent app by Dawid Woźniak.
+
+## Product
+
+- [Awake](https://awake.dawidw.pl/): menu bar keep-awake for Mac, with a permanent mode and a timed sunset
+
+## Author
+
+- [Dawid Woźniak](https://dawidw.pl): Product Designer from Poland
+- [Dawid on X](https://x.com/Dawidwu)
