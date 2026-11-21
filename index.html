@@ -146,6 +146,10 @@
   .fine .left { display:flex; gap:6px 14px; flex-wrap:wrap; align-items:baseline; }
   .fine .links { display:flex; gap:20px; }
   .fine .links a:hover { color:var(--fg); }
+  .macbase-row { margin-top:28px; }
+  .macbase-badge { display:inline-block; line-height:0; opacity:.88; transition:opacity .2s ease; }
+  .macbase-badge:hover { opacity:1; }
+  .macbase-badge img { height:52px; width:auto; display:block; }
 
   @media (max-width:760px) {
     .wrap { padding:0 20px; }
@@ -433,6 +437,12 @@
         <a class="sos" href="https://pssst.dawidw.pl" target="_blank" rel="noopener">
           <span class="notch-mark" aria-hidden="true"><svg viewBox="0 0 76 68"><rect x="6" y="14" width="64" height="42" rx="8" fill="#141418" stroke="#2c2c2e"/><path d="M28 14h20v8.5c0 5-3.4 7.5-10 7.5s-10-2.5-10-7.5V14z" fill="#000"/><circle cx="46" cy="20" r="3" fill="#0A84FF"/></svg></span>
           <span class="txt"><span class="k">Your bot wants something</span><span class="v"><span class="line"><b>Pssst</b>, the notch companion<span class="arr">&#8599;</span></span></span></span>
+        </a>
+      </div>
+      <!-- MacBase listing URL (update slug here when confirmed): https://macbase.app/apps/awake?ref=badge -->
+      <div class="macbase-row">
+        <a class="macbase-badge" href="https://macbase.app/apps/awake?ref=badge" target="_blank" rel="noopener">
+          <img src="https://macbase.app/badge/featured-on-macbase-dark.svg" alt="Awake is featured on MacBase" height="72">
         </a>
       </div>
       <div class="fine">
